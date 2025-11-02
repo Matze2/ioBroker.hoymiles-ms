@@ -101,7 +101,7 @@ export const stateConfig: StateConfig = {
     'device.bat_i': {
         mqtt: {
             mqtt_publish: `homeassistant/sensor/<dev_id>/device/state`,
-            mqtt_publish_funct: (value: MqttMessageEvent): any => JSON.parse(value.payload).bat_i,
+            mqtt_publish_funct: (value: any): any => value.bat_i,
         },
         preInit: false,
         keepValue: false,
@@ -118,7 +118,7 @@ export const stateConfig: StateConfig = {
     'device.bat_p': {
         mqtt: {
             mqtt_publish: `homeassistant/sensor/<dev_id>/device/state`,
-            mqtt_publish_funct: (value: MqttMessageEvent): any => JSON.parse(value.payload).bat_p,
+            mqtt_publish_funct: (value: any): any => value.bat_p,
         },
         preInit: false,
         keepValue: false,
@@ -135,7 +135,7 @@ export const stateConfig: StateConfig = {
     'device.bat_temp': {
         mqtt: {
             mqtt_publish: `homeassistant/sensor/<dev_id>/device/state`,
-            mqtt_publish_funct: (value: MqttMessageEvent): any => JSON.parse(value.payload).bat_temp,
+            mqtt_publish_funct: (value: any): any => value.bat_temp,
         },
         preInit: false,
         keepValue: false,
@@ -152,7 +152,7 @@ export const stateConfig: StateConfig = {
     'device.bat_v': {
         mqtt: {
             mqtt_publish: `homeassistant/sensor/<dev_id>/device/state`,
-            mqtt_publish_funct: (value: MqttMessageEvent): any => JSON.parse(value.payload).bat_v,
+            mqtt_publish_funct: (value: any): any => value.bat_v,
         },
         preInit: false,
         keepValue: false,
@@ -169,7 +169,7 @@ export const stateConfig: StateConfig = {
     'device.bat_sts': {
         mqtt: {
             mqtt_publish: `homeassistant/sensor/<dev_id>/device/state`,
-            mqtt_publish_funct: (value: MqttMessageEvent): any => JSON.parse(value.payload).bat_sts,
+            mqtt_publish_funct: (value: any): any => value.bat_sts,
         },
         preInit: false,
         keepValue: false,
@@ -185,8 +185,8 @@ export const stateConfig: StateConfig = {
     'device.grid_off.ein': {
         mqtt: {
             mqtt_publish: `homeassistant/sensor/<dev_id>/device/state`,
-            mqtt_publish_funct: (value: MqttMessageEvent): any =>
-                JSON.parse(value.payload).grid?.filter((obj: GridObj) => obj.type === 'grid_off')[0]?.ein,
+            mqtt_publish_funct: (value: any): any =>
+                value.grid?.filter((obj: GridObj) => obj.type === 'grid_off')[0]?.ein,
         },
         preInit: false,
         keepValue: false,
@@ -203,8 +203,8 @@ export const stateConfig: StateConfig = {
     'device.grid_off.eout': {
         mqtt: {
             mqtt_publish: `homeassistant/sensor/<dev_id>/device/state`,
-            mqtt_publish_funct: (value: MqttMessageEvent): any =>
-                JSON.parse(value.payload).grid?.filter((obj: GridObj) => obj.type === 'grid_off')[0]?.eout,
+            mqtt_publish_funct: (value: any): any =>
+                value.grid?.filter((obj: GridObj) => obj.type === 'grid_off')[0]?.eout,
         },
         preInit: false,
         keepValue: false,
@@ -221,8 +221,8 @@ export const stateConfig: StateConfig = {
     'device.grid_off.etin': {
         mqtt: {
             mqtt_publish: `homeassistant/sensor/<dev_id>/device/state`,
-            mqtt_publish_funct: (value: MqttMessageEvent): any =>
-                JSON.parse(value.payload).grid?.filter((obj: GridObj) => obj.type === 'grid_off')[0]?.etin,
+            mqtt_publish_funct: (value: any): any =>
+                value.grid?.filter((obj: GridObj) => obj.type === 'grid_off')[0]?.etin,
         },
         preInit: false,
         keepValue: false,
@@ -239,8 +239,8 @@ export const stateConfig: StateConfig = {
     'device.grid_off.etout': {
         mqtt: {
             mqtt_publish: `homeassistant/sensor/<dev_id>/device/state`,
-            mqtt_publish_funct: (value: MqttMessageEvent): any =>
-                JSON.parse(value.payload).grid?.filter((obj: GridObj) => obj.type === 'grid_off')[0]?.etout,
+            mqtt_publish_funct: (value: any): any =>
+                value.grid?.filter((obj: GridObj) => obj.type === 'grid_off')[0]?.etout,
         },
         preInit: false,
         keepValue: false,
@@ -257,8 +257,8 @@ export const stateConfig: StateConfig = {
     'device.grid_off.i': {
         mqtt: {
             mqtt_publish: `homeassistant/sensor/<dev_id>/device/state`,
-            mqtt_publish_funct: (value: MqttMessageEvent): any =>
-                JSON.parse(value.payload).grid?.filter((obj: GridObj) => obj.type === 'grid_off')[0]?.i,
+            mqtt_publish_funct: (value: any): any =>
+                value.grid?.filter((obj: GridObj) => obj.type === 'grid_off')[0]?.i,
         },
         preInit: false,
         keepValue: false,
@@ -275,8 +275,8 @@ export const stateConfig: StateConfig = {
     'device.grid_off.f': {
         mqtt: {
             mqtt_publish: `homeassistant/sensor/<dev_id>/device/state`,
-            mqtt_publish_funct: (value: MqttMessageEvent): any =>
-                JSON.parse(value.payload).grid?.filter((obj: GridObj) => obj.type === 'grid_off')[0]?.f,
+            mqtt_publish_funct: (value: any): any =>
+                value.grid?.filter((obj: GridObj) => obj.type === 'grid_off')[0]?.f,
         },
         preInit: false,
         keepValue: false,
@@ -293,8 +293,8 @@ export const stateConfig: StateConfig = {
     'device.grid_off.p': {
         mqtt: {
             mqtt_publish: `homeassistant/sensor/<dev_id>/device/state`,
-            mqtt_publish_funct: (value: MqttMessageEvent): any =>
-                JSON.parse(value.payload).grid?.filter((obj: GridObj) => obj.type === 'grid_off')[0]?.p,
+            mqtt_publish_funct: (value: any): any =>
+                value.grid?.filter((obj: GridObj) => obj.type === 'grid_off')[0]?.p,
         },
         preInit: false,
         keepValue: false,
@@ -311,8 +311,8 @@ export const stateConfig: StateConfig = {
     'device.grid_off.q': {
         mqtt: {
             mqtt_publish: `homeassistant/sensor/<dev_id>/device/state`,
-            mqtt_publish_funct: (value: MqttMessageEvent): any =>
-                JSON.parse(value.payload).grid?.filter((obj: GridObj) => obj.type === 'grid_off')[0]?.q,
+            mqtt_publish_funct: (value: any): any =>
+                value.grid?.filter((obj: GridObj) => obj.type === 'grid_off')[0]?.q,
         },
         preInit: false,
         keepValue: false,
@@ -329,8 +329,8 @@ export const stateConfig: StateConfig = {
     'device.grid_off.v': {
         mqtt: {
             mqtt_publish: `homeassistant/sensor/<dev_id>/device/state`,
-            mqtt_publish_funct: (value: MqttMessageEvent): any =>
-                JSON.parse(value.payload).grid?.filter((obj: GridObj) => obj.type === 'grid_off')[0]?.v,
+            mqtt_publish_funct: (value: any): any =>
+                value.grid?.filter((obj: GridObj) => obj.type === 'grid_off')[0]?.v,
         },
         preInit: false,
         keepValue: false,
@@ -347,8 +347,8 @@ export const stateConfig: StateConfig = {
     'device.grid_on.ein': {
         mqtt: {
             mqtt_publish: `homeassistant/sensor/<dev_id>/device/state`,
-            mqtt_publish_funct: (value: MqttMessageEvent): any =>
-                JSON.parse(value.payload).grid?.filter((obj: GridObj) => obj.type === 'grid_on')[0]?.ein,
+            mqtt_publish_funct: (value: any): any =>
+                value.grid?.filter((obj: GridObj) => obj.type === 'grid_on')[0]?.ein,
         },
         preInit: false,
         keepValue: false,
@@ -365,8 +365,8 @@ export const stateConfig: StateConfig = {
     'device.grid_on.eout': {
         mqtt: {
             mqtt_publish: `homeassistant/sensor/<dev_id>/device/state`,
-            mqtt_publish_funct: (value: MqttMessageEvent): any =>
-                JSON.parse(value.payload).grid?.filter((obj: GridObj) => obj.type === 'grid_on')[0]?.eout,
+            mqtt_publish_funct: (value: any): any =>
+                value.grid?.filter((obj: GridObj) => obj.type === 'grid_on')[0]?.eout,
         },
         preInit: false,
         keepValue: false,
@@ -383,8 +383,8 @@ export const stateConfig: StateConfig = {
     'device.grid_on.etin': {
         mqtt: {
             mqtt_publish: `homeassistant/sensor/<dev_id>/device/state`,
-            mqtt_publish_funct: (value: MqttMessageEvent): any =>
-                JSON.parse(value.payload).grid?.filter((obj: GridObj) => obj.type === 'grid_on')[0]?.etin,
+            mqtt_publish_funct: (value: any): any =>
+                value.grid?.filter((obj: GridObj) => obj.type === 'grid_on')[0]?.etin,
         },
         preInit: false,
         keepValue: false,
@@ -401,8 +401,8 @@ export const stateConfig: StateConfig = {
     'device.grid_on.etout': {
         mqtt: {
             mqtt_publish: `homeassistant/sensor/<dev_id>/device/state`,
-            mqtt_publish_funct: (value: MqttMessageEvent): any =>
-                JSON.parse(value.payload).grid?.filter((obj: GridObj) => obj.type === 'grid_on')[0]?.etout,
+            mqtt_publish_funct: (value: any): any =>
+                value.grid?.filter((obj: GridObj) => obj.type === 'grid_on')[0]?.etout,
         },
         preInit: false,
         keepValue: false,
@@ -419,8 +419,8 @@ export const stateConfig: StateConfig = {
     'device.grid_on.i': {
         mqtt: {
             mqtt_publish: `homeassistant/sensor/<dev_id>/device/state`,
-            mqtt_publish_funct: (value: MqttMessageEvent): any =>
-                JSON.parse(value.payload).grid?.filter((obj: GridObj) => obj.type === 'grid_on')[0]?.i,
+            mqtt_publish_funct: (value: any): any =>
+                value.grid?.filter((obj: GridObj) => obj.type === 'grid_on')[0]?.i,
         },
         preInit: false,
         keepValue: false,
@@ -437,8 +437,8 @@ export const stateConfig: StateConfig = {
     'device.grid_on.f': {
         mqtt: {
             mqtt_publish: `homeassistant/sensor/<dev_id>/device/state`,
-            mqtt_publish_funct: (value: MqttMessageEvent): any =>
-                JSON.parse(value.payload).grid?.filter((obj: GridObj) => obj.type === 'grid_on')[0]?.f,
+            mqtt_publish_funct: (value: any): any =>
+                value.grid?.filter((obj: GridObj) => obj.type === 'grid_on')[0]?.f,
         },
         preInit: false,
         keepValue: false,
@@ -455,8 +455,8 @@ export const stateConfig: StateConfig = {
     'device.grid_on.p': {
         mqtt: {
             mqtt_publish: `homeassistant/sensor/<dev_id>/device/state`,
-            mqtt_publish_funct: (value: MqttMessageEvent): any =>
-                JSON.parse(value.payload).grid?.filter((obj: GridObj) => obj.type === 'grid_on')[0]?.p,
+            mqtt_publish_funct: (value: any): any =>
+                value.grid?.filter((obj: GridObj) => obj.type === 'grid_on')[0]?.p,
         },
         preInit: false,
         keepValue: false,
@@ -473,8 +473,8 @@ export const stateConfig: StateConfig = {
     'device.grid_on.q': {
         mqtt: {
             mqtt_publish: `homeassistant/sensor/<dev_id>/device/state`,
-            mqtt_publish_funct: (value: MqttMessageEvent): any =>
-                JSON.parse(value.payload).grid?.filter((obj: GridObj) => obj.type === 'grid_on')[0]?.q,
+            mqtt_publish_funct: (value: any): any =>
+                value.grid?.filter((obj: GridObj) => obj.type === 'grid_on')[0]?.q,
         },
         preInit: false,
         keepValue: false,
@@ -491,8 +491,8 @@ export const stateConfig: StateConfig = {
     'device.grid_on.v': {
         mqtt: {
             mqtt_publish: `homeassistant/sensor/<dev_id>/device/state`,
-            mqtt_publish_funct: (value: MqttMessageEvent): any =>
-                JSON.parse(value.payload).grid?.filter((obj: GridObj) => obj.type === 'grid_on')[0]?.v,
+            mqtt_publish_funct: (value: any): any =>
+                value.grid?.filter((obj: GridObj) => obj.type === 'grid_on')[0]?.v,
         },
         preInit: false,
         keepValue: false,
@@ -509,8 +509,8 @@ export const stateConfig: StateConfig = {
     'device.identifiers': {
         mqtt: {
             mqtt_publish: `homeassistant/switch/<dev_id>/config`,
-            mqtt_publish_funct: (value: MqttMessageEvent): any =>
-                JSON.stringify(JSON.parse(value.payload).device?.identifiers),
+            mqtt_publish_funct: (value: any): any =>
+                JSON.stringify(value.device?.identifiers),
         },
         preInit: false,
         keepValue: true,
@@ -526,8 +526,8 @@ export const stateConfig: StateConfig = {
     'device.inv.ein': {
         mqtt: {
             mqtt_publish: `homeassistant/sensor/<dev_id>/device/state`,
-            mqtt_publish_funct: (value: MqttMessageEvent): any =>
-                JSON.parse(value.payload).grid?.filter((obj: GridObj) => obj.type === 'inv')[0]?.ein,
+            mqtt_publish_funct: (value: any): any =>
+                value.grid?.filter((obj: GridObj) => obj.type === 'inv')[0]?.ein,
         },
         preInit: false,
         keepValue: false,
@@ -544,8 +544,8 @@ export const stateConfig: StateConfig = {
     'device.inv.eout': {
         mqtt: {
             mqtt_publish: `homeassistant/sensor/<dev_id>/device/state`,
-            mqtt_publish_funct: (value: MqttMessageEvent): any =>
-                JSON.parse(value.payload).grid?.filter((obj: GridObj) => obj.type === 'inv')[0]?.eout,
+            mqtt_publish_funct: (value: any): any =>
+                value.grid?.filter((obj: GridObj) => obj.type === 'inv')[0]?.eout,
         },
         preInit: false,
         keepValue: false,
@@ -562,8 +562,8 @@ export const stateConfig: StateConfig = {
     'device.inv.etin': {
         mqtt: {
             mqtt_publish: `homeassistant/sensor/<dev_id>/device/state`,
-            mqtt_publish_funct: (value: MqttMessageEvent): any =>
-                JSON.parse(value.payload).grid?.filter((obj: GridObj) => obj.type === 'inv')[0]?.etin,
+            mqtt_publish_funct: (value: any): any =>
+                value.grid?.filter((obj: GridObj) => obj.type === 'inv')[0]?.etin,
         },
         preInit: false,
         keepValue: false,
@@ -580,8 +580,8 @@ export const stateConfig: StateConfig = {
     'device.inv.etout': {
         mqtt: {
             mqtt_publish: `homeassistant/sensor/<dev_id>/device/state`,
-            mqtt_publish_funct: (value: MqttMessageEvent): any =>
-                JSON.parse(value.payload).grid?.filter((obj: GridObj) => obj.type === 'inv')[0]?.etout,
+            mqtt_publish_funct: (value: any): any =>
+                value.grid?.filter((obj: GridObj) => obj.type === 'inv')[0]?.etout,
         },
         preInit: false,
         keepValue: false,
@@ -598,8 +598,8 @@ export const stateConfig: StateConfig = {
     'device.inv.i': {
         mqtt: {
             mqtt_publish: `homeassistant/sensor/<dev_id>/device/state`,
-            mqtt_publish_funct: (value: MqttMessageEvent): any =>
-                JSON.parse(value.payload).grid?.filter((obj: GridObj) => obj.type === 'inv')[0]?.i,
+            mqtt_publish_funct: (value: any): any =>
+                value.grid?.filter((obj: GridObj) => obj.type === 'inv')[0]?.i,
         },
         preInit: false,
         keepValue: false,
@@ -616,8 +616,8 @@ export const stateConfig: StateConfig = {
     'device.inv.p': {
         mqtt: {
             mqtt_publish: `homeassistant/sensor/<dev_id>/device/state`,
-            mqtt_publish_funct: (value: MqttMessageEvent): any =>
-                JSON.parse(value.payload).grid?.filter((obj: GridObj) => obj.type === 'inv')[0]?.p,
+            mqtt_publish_funct: (value: any): any =>
+                value.grid?.filter((obj: GridObj) => obj.type === 'inv')[0]?.p,
         },
         preInit: false,
         keepValue: false,
@@ -634,8 +634,8 @@ export const stateConfig: StateConfig = {
     'device.inv.q': {
         mqtt: {
             mqtt_publish: `homeassistant/sensor/<dev_id>/device/state`,
-            mqtt_publish_funct: (value: MqttMessageEvent): any =>
-                JSON.parse(value.payload).grid?.filter((obj: GridObj) => obj.type === 'inv')[0]?.q,
+            mqtt_publish_funct: (value: any): any =>
+                value.grid?.filter((obj: GridObj) => obj.type === 'inv')[0]?.q,
         },
         preInit: false,
         keepValue: false,
@@ -652,8 +652,8 @@ export const stateConfig: StateConfig = {
     'device.inv.v': {
         mqtt: {
             mqtt_publish: `homeassistant/sensor/<dev_id>/device/state`,
-            mqtt_publish_funct: (value: MqttMessageEvent): any =>
-                JSON.parse(value.payload).grid?.filter((obj: GridObj) => obj.type === 'inv')[0]?.v,
+            mqtt_publish_funct: (value: any): any =>
+                value.grid?.filter((obj: GridObj) => obj.type === 'inv')[0]?.v,
         },
         preInit: false,
         keepValue: false,
@@ -670,7 +670,7 @@ export const stateConfig: StateConfig = {
     'device.manufacturer': {
         mqtt: {
             mqtt_publish: `homeassistant/switch/<dev_id>/config`,
-            mqtt_publish_funct: (value: MqttMessageEvent): any => JSON.parse(value.payload).device?.manufacturer,
+            mqtt_publish_funct: (value: any): any => value.device?.manufacturer,
         },
         preInit: true,
         keepValue: true,
@@ -686,7 +686,7 @@ export const stateConfig: StateConfig = {
     'device.model': {
         mqtt: {
             mqtt_publish: `homeassistant/switch/<dev_id>/config`,
-            mqtt_publish_funct: (value: MqttMessageEvent): any => JSON.parse(value.payload).device?.model,
+            mqtt_publish_funct: (value: any): any => value.device?.model,
         },
         preInit: true,
         keepValue: true,
@@ -702,7 +702,7 @@ export const stateConfig: StateConfig = {
     'device.name': {
         mqtt: {
             mqtt_publish: `homeassistant/switch/<dev_id>/config`,
-            mqtt_publish_funct: (value: MqttMessageEvent): any => JSON.parse(value.payload).device?.name,
+            mqtt_publish_funct: (value: any): any => value.device?.name,
         },
         preInit: true,
         keepValue: true,
@@ -718,7 +718,7 @@ export const stateConfig: StateConfig = {
     'device.rssi': {
         mqtt: {
             mqtt_publish: `homeassistant/sensor/<dev_id>/device/state`,
-            mqtt_publish_funct: (value: MqttMessageEvent): any => JSON.parse(value.payload).rssi,
+            mqtt_publish_funct: (value: any): any => value.rssi,
         },
         preInit: false,
         keepValue: false,
@@ -735,7 +735,7 @@ export const stateConfig: StateConfig = {
     'device.soc': {
         mqtt: {
             mqtt_publish: `homeassistant/sensor/<dev_id>/device/state`,
-            mqtt_publish_funct: (value: MqttMessageEvent): any => JSON.parse(value.payload).soc,
+            mqtt_publish_funct: (value: any): any => value.soc,
         },
         preInit: false,
         keepValue: false,
@@ -752,7 +752,7 @@ export const stateConfig: StateConfig = {
     'device.sw_version': {
         mqtt: {
             mqtt_publish: `homeassistant/switch/<dev_id>/config`,
-            mqtt_publish_funct: (value: MqttMessageEvent): any => JSON.parse(value.payload).device?.sw_version,
+            mqtt_publish_funct: (value: any): any => value.device?.sw_version,
         },
         preInit: false,
         keepValue: false,
@@ -795,7 +795,7 @@ export const stateConfig: StateConfig = {
     'info.ip': {
         mqtt: {
             mqtt_publish: `homeassistant/switch/<dev_id>/config`,
-            mqtt_publish_funct: (value: MqttMessageEvent): any => value.ip,
+            mqtt_publish_funct: (value: any): any => value.ip,
         },
         preInit: true,
         keepValue: false,
@@ -823,7 +823,7 @@ export const stateConfig: StateConfig = {
     'power_ctrl.min': {
         mqtt: {
             mqtt_publish: `homeassistant/number/<dev_id>/power_ctrl/config`,
-            mqtt_publish_funct: (value: MqttMessageEvent): any => JSON.parse(value.payload).min,
+            mqtt_publish_funct: (value: any): any => value.min,
         },
         preInit: false,
         keepValue: false,
@@ -840,7 +840,7 @@ export const stateConfig: StateConfig = {
     'power_ctrl.max': {
         mqtt: {
             mqtt_publish: `homeassistant/number/<dev_id>/power_ctrl/config`,
-            mqtt_publish_funct: (value: MqttMessageEvent): any => JSON.parse(value.payload).max,
+            mqtt_publish_funct: (value: any): any => value.max,
         },
         preInit: false,
         keepValue: false,
@@ -869,7 +869,7 @@ export const stateConfig: StateConfig = {
     'power_ctrl.step': {
         mqtt: {
             mqtt_publish: `homeassistant/number/<dev_id>/power_ctrl/config`,
-            mqtt_publish_funct: (value: MqttMessageEvent): any => JSON.parse(value.payload).step,
+            mqtt_publish_funct: (value: any): any => value.step,
         },
         preInit: false,
         keepValue: false,
@@ -886,7 +886,7 @@ export const stateConfig: StateConfig = {
     'realtime.bat_p': {
         mqtt: {
             mqtt_publish: `homeassistant/sensor/<dev_id>/quick/state`,
-            mqtt_publish_funct: (value: MqttMessageEvent): any => JSON.parse(value.payload).bat_p,
+            mqtt_publish_funct: (value: any): any => value.bat_p,
         },
         preInit: false,
         keepValue: false,
@@ -903,7 +903,7 @@ export const stateConfig: StateConfig = {
     'realtime.bat_sts': {
         mqtt: {
             mqtt_publish: `homeassistant/sensor/<dev_id>/quick/state`,
-            mqtt_publish_funct: (value: MqttMessageEvent): any => JSON.parse(value.payload).bat_sts,
+            mqtt_publish_funct: (value: any): any => value.bat_sts,
         },
         preInit: false,
         keepValue: false,
@@ -919,7 +919,7 @@ export const stateConfig: StateConfig = {
     'realtime.grid_on_p': {
         mqtt: {
             mqtt_publish: `homeassistant/sensor/<dev_id>/quick/state`,
-            mqtt_publish_funct: (value: MqttMessageEvent): any => JSON.parse(value.payload).grid_on_p,
+            mqtt_publish_funct: (value: any): any => value.grid_on_p,
         },
         preInit: false,
         keepValue: false,
@@ -936,7 +936,7 @@ export const stateConfig: StateConfig = {
     'realtime.grid_off_p': {
         mqtt: {
             mqtt_publish: `homeassistant/sensor/<dev_id>/quick/state`,
-            mqtt_publish_funct: (value: MqttMessageEvent): any => JSON.parse(value.payload).grid_off_p,
+            mqtt_publish_funct: (value: any): any => value.grid_off_p,
         },
         preInit: false,
         keepValue: false,
@@ -953,7 +953,7 @@ export const stateConfig: StateConfig = {
     'realtime.soc': {
         mqtt: {
             mqtt_publish: `homeassistant/sensor/<dev_id>/quick/state`,
-            mqtt_publish_funct: (value: MqttMessageEvent): any => JSON.parse(value.payload).soc,
+            mqtt_publish_funct: (value: any): any => value.soc,
         },
         preInit: false,
         keepValue: false,
@@ -970,7 +970,7 @@ export const stateConfig: StateConfig = {
     'realtime.sys_bat_p': {
         mqtt: {
             mqtt_publish: `homeassistant/sensor/<dev_id>/quick/state`,
-            mqtt_publish_funct: (value: MqttMessageEvent): any => JSON.parse(value.payload).sys_bat_p,
+            mqtt_publish_funct: (value: any): any => value.sys_bat_p,
         },
         preInit: false,
         keepValue: false,
@@ -987,7 +987,7 @@ export const stateConfig: StateConfig = {
     'realtime.sys_grid_p': {
         mqtt: {
             mqtt_publish: `homeassistant/sensor/<dev_id>/quick/state`,
-            mqtt_publish_funct: (value: MqttMessageEvent): any => JSON.parse(value.payload).sys_grid_p,
+            mqtt_publish_funct: (value: any): any => value.sys_grid_p,
         },
         preInit: false,
         keepValue: false,
@@ -1004,7 +1004,7 @@ export const stateConfig: StateConfig = {
     'realtime.sys_load_p': {
         mqtt: {
             mqtt_publish: `homeassistant/sensor/<dev_id>/quick/state`,
-            mqtt_publish_funct: (value: MqttMessageEvent): any => JSON.parse(value.payload).sys_load_p,
+            mqtt_publish_funct: (value: any): any => value.sys_load_p,
         },
         preInit: false,
         keepValue: false,
@@ -1021,7 +1021,7 @@ export const stateConfig: StateConfig = {
     'realtime.sys_plug_p': {
         mqtt: {
             mqtt_publish: `homeassistant/sensor/<dev_id>/quick/state`,
-            mqtt_publish_funct: (value: MqttMessageEvent): any => JSON.parse(value.payload).sys_plug_p,
+            mqtt_publish_funct: (value: any): any => value.sys_plug_p,
         },
         preInit: false,
         keepValue: false,
@@ -1038,7 +1038,7 @@ export const stateConfig: StateConfig = {
     'realtime.sys_pv_p': {
         mqtt: {
             mqtt_publish: `homeassistant/sensor/<dev_id>/quick/state`,
-            mqtt_publish_funct: (value: MqttMessageEvent): any => JSON.parse(value.payload).sys_pv_p,
+            mqtt_publish_funct: (value: any): any => value.sys_pv_p,
         },
         preInit: false,
         keepValue: false,
@@ -1055,7 +1055,7 @@ export const stateConfig: StateConfig = {
     'realtime.sys_soc': {
         mqtt: {
             mqtt_publish: `homeassistant/sensor/<dev_id>/quick/state`,
-            mqtt_publish_funct: (value: MqttMessageEvent): any => JSON.parse(value.payload).sys_soc,
+            mqtt_publish_funct: (value: any): any => value.sys_soc,
         },
         preInit: false,
         keepValue: false,
@@ -1072,7 +1072,7 @@ export const stateConfig: StateConfig = {
     'realtime.sys_sp_p': {
         mqtt: {
             mqtt_publish: `homeassistant/sensor/<dev_id>/quick/state`,
-            mqtt_publish_funct: (value: MqttMessageEvent): any => JSON.parse(value.payload).sys_sp_p,
+            mqtt_publish_funct: (value: any): any => value.sys_sp_p,
         },
         preInit: false,
         keepValue: false,
@@ -1089,7 +1089,7 @@ export const stateConfig: StateConfig = {
     'system.bat_p': {
         mqtt: {
             mqtt_publish: `homeassistant/sensor/<dev_id>/system/state`,
-            mqtt_publish_funct: (value: MqttMessageEvent): any => JSON.parse(value.payload).bat_p,
+            mqtt_publish_funct: (value: any): any => value.bat_p,
         },
         preInit: false,
         keepValue: false,
@@ -1106,7 +1106,7 @@ export const stateConfig: StateConfig = {
     'system.chg_e': {
         mqtt: {
             mqtt_publish: `homeassistant/sensor/<dev_id>/system/state`,
-            mqtt_publish_funct: (value: MqttMessageEvent): any => JSON.parse(value.payload).chg_e,
+            mqtt_publish_funct: (value: any): any => value.chg_e,
         },
         preInit: false,
         keepValue: false,
@@ -1123,7 +1123,7 @@ export const stateConfig: StateConfig = {
     'system.dchg_e': {
         mqtt: {
             mqtt_publish: `homeassistant/sensor/<dev_id>/system/state`,
-            mqtt_publish_funct: (value: MqttMessageEvent): any => JSON.parse(value.payload).dchg_e,
+            mqtt_publish_funct: (value: any): any => value.dchg_e,
         },
         preInit: false,
         keepValue: false,
@@ -1140,7 +1140,7 @@ export const stateConfig: StateConfig = {
     'system.grid_p': {
         mqtt: {
             mqtt_publish: `homeassistant/sensor/<dev_id>/system/state`,
-            mqtt_publish_funct: (value: MqttMessageEvent): any => JSON.parse(value.payload).grid_p,
+            mqtt_publish_funct: (value: any): any => value.grid_p,
         },
         preInit: false,
         keepValue: false,
@@ -1157,7 +1157,7 @@ export const stateConfig: StateConfig = {
     'system.ems_mode': {
         mqtt: {
             mqtt_publish: `homeassistant/sensor/<dev_id>/system/state`,
-            mqtt_publish_funct: (value: MqttMessageEvent): any => JSON.parse(value.payload).ems_mode,
+            mqtt_publish_funct: (value: any): any => value.ems_mode,
         },
         preInit: false,
         keepValue: false,
@@ -1173,7 +1173,7 @@ export const stateConfig: StateConfig = {
     'system.plug_in_e': {
         mqtt: {
             mqtt_publish: `homeassistant/sensor/<dev_id>/system/state`,
-            mqtt_publish_funct: (value: MqttMessageEvent): any => JSON.parse(value.payload).plug_in_e,
+            mqtt_publish_funct: (value: any): any => value.plug_in_e,
         },
         preInit: false,
         keepValue: false,
@@ -1190,7 +1190,7 @@ export const stateConfig: StateConfig = {
     'system.plug_out_e': {
         mqtt: {
             mqtt_publish: `homeassistant/sensor/<dev_id>/system/state`,
-            mqtt_publish_funct: (value: MqttMessageEvent): any => JSON.parse(value.payload).plug_out_e,
+            mqtt_publish_funct: (value: any): any => value.plug_out_e,
         },
         preInit: false,
         keepValue: false,
@@ -1207,7 +1207,7 @@ export const stateConfig: StateConfig = {
     'system.pv_e': {
         mqtt: {
             mqtt_publish: `homeassistant/sensor/<dev_id>/system/state`,
-            mqtt_publish_funct: (value: MqttMessageEvent): any => JSON.parse(value.payload).pv_e,
+            mqtt_publish_funct: (value: any): any => value.pv_e,
         },
         preInit: false,
         keepValue: false,
@@ -1224,7 +1224,7 @@ export const stateConfig: StateConfig = {
     'system.pv_p': {
         mqtt: {
             mqtt_publish: `homeassistant/sensor/<dev_id>/system/state`,
-            mqtt_publish_funct: (value: MqttMessageEvent): any => JSON.parse(value.payload).pv_p,
+            mqtt_publish_funct: (value: any): any => value.pv_p,
         },
         preInit: false,
         keepValue: false,
@@ -1241,7 +1241,7 @@ export const stateConfig: StateConfig = {
     'system.soc': {
         mqtt: {
             mqtt_publish: `homeassistant/sensor/<dev_id>/system/state`,
-            mqtt_publish_funct: (value: MqttMessageEvent): any => JSON.parse(value.payload).soc,
+            mqtt_publish_funct: (value: any): any => value.soc,
         },
         preInit: false,
         keepValue: false,
@@ -1258,7 +1258,7 @@ export const stateConfig: StateConfig = {
     'system.sp_p': {
         mqtt: {
             mqtt_publish: `homeassistant/sensor/<dev_id>/system/state`,
-            mqtt_publish_funct: (value: MqttMessageEvent): any => JSON.parse(value.payload).sp_p,
+            mqtt_publish_funct: (value: any): any => value.sp_p,
         },
         preInit: false,
         keepValue: false,

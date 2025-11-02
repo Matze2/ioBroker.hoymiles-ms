@@ -63,6 +63,7 @@ export class HoymilesMqtt {
         await initStates(this.#adapter, deviceId, { clientId: event.clientId });
         await handleOnlineStatus(this.#adapter, deviceId);
 
+        const parsed = JSON.parse(event.payload);
         for (const stateKey in stateConfig) {
             if (!stateConfig[stateKey].mqtt || stateConfig[stateKey].mqtt.mqtt_publish !== topic) {
                 continue;
@@ -71,7 +72,7 @@ export class HoymilesMqtt {
 
             const stateId = `${filterDevId(deviceId)}.${stateKey}`;
             const mqtt_publish_func = state.mqtt?.mqtt_publish_funct;
-            let value = mqtt_publish_func(event);
+            let value = mqtt_publish_func(parsed);
             if (state.common.type === 'boolean' && value === 'false') {
                 value = false;
             }
