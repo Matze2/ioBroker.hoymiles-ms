@@ -5,6 +5,12 @@ import type { MqttConnectEvent, MqttMessageEvent, MqttSubscribeEvent } from './m
 const REFRESH_TIMEOUT = 20_000; //20s
 
 /**
+ * Controllable states which are re-published periodically while the device
+ * is in mqtt_ctrl mode.
+ */
+const CONTROLLABLE_STATES = ['power_ctrl.set', 'output_power.set'];
+
+/**
  * HoymilesMqtt - class to handle hoymiles mqtt topics within ioBroker
  *
  */
@@ -187,38 +193,40 @@ export class HoymilesMqtt {
 
             this.#watchFlag = true;
 
-            const id = `${deviceId}.power_ctrl.set`;
-            state = await this.#adapter.getStateAsync(`${deviceId}.power_ctrl.set`);
-            if (!state) {
-                this.#log.warn(`[hoymilesMqtt] ${deviceId} - cannot access state ${id}`);
-                continue;
+            for (const stateKey of CONTROLLABLE_STATES) {
+                const id = `${deviceId}.${stateKey}`;
+                state = await this.#adapter.getStateAsync(id);
+                if (!state) {
+                    this.#log.warn(`[hoymilesMqtt] ${deviceId} - cannot access state ${id}`);
+                    continue;
+                }
+                if (state.val === undefined || state.val === null) {
+                    this.#log.debug(`[hoymilesMqtt] ${deviceId} - no value set for state ${id}, skipping update`);
+                    continue;
+                }
+
+                let val = parseFloat(state.val?.toString() || '0');
+                val = val + 0.1 * (this.#refreshCnt + 1);
+
+                const stateObject = await this.#adapter.getObjectAsync(`${id}`);
+                const clientId = stateObject?.native?.clientId;
+                const topic = stateObject?.native?.topic;
+
+                if (!clientId) {
+                    this.#log.debug(`[hoymilesMqtt] ${deviceId} - state ${id} has no clientId set, ignoring refresh`);
+                    continue;
+                }
+
+                if (!topic) {
+                    this.#log.debug(`[hoymilesMqtt] ${deviceId} - state ${id} has no registered topic, ignoring refresh`);
+                    continue;
+                }
+
+                this.#log.debug(`[hoymilesMqtt] ${deviceId} - new value (${val}) at ${id} will be published at ${topic}`);
+
+                const payload = val?.toString() || '';
+                this.#adapter.mqttPublish(clientId, { topic: topic, payload: payload, qos: 0, retain: false });
             }
-            if (state.val === undefined || state.val === null) {
-                this.#log.debug(`[hoymilesMqtt] ${deviceId} - no value set for state ${id}, skipping update`);
-                continue;
-            }
-
-            let val = parseFloat(state.val?.toString() || '0');
-            val = val + 0.1 * (this.#refreshCnt + 1);
-
-            const stateObject = await this.#adapter.getObjectAsync(`${id}`);
-            const clientId = stateObject?.native?.clientId;
-            const topic = stateObject?.native?.topic;
-
-            if (!clientId) {
-                this.#log.debug(`[hoymilesMqtt] ${deviceId} - state ${id} has no clientId set, ignoring change`);
-                continue;
-            }
-
-            if (!topic) {
-                this.#log.debug(`[hoymilesMqtt] ${deviceId} - state ${id} has no registered topic, ignoring change`);
-                continue;
-            }
-
-            this.#log.debug(`[hoymilesMqtt] ${deviceId} - new value (${val}) at ${id} will be published at ${topic}`);
-
-            const payload = val?.toString() || '';
-            this.#adapter.mqttPublish(clientId, { topic: topic, payload: payload, qos: 0, retain: false });
         }
 
         if (!this.#watchFlag) {
